@@ -4,64 +4,8 @@ import { IPost, PostContext } from '../../contexts/Post';
 import { Styled } from './styles';
 
 const Main = () => {
-  const allPosts = [
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-  ];
-
-  const myPosts = [
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-    { text: 'asdasdasd', username: 'Vinicius' },
-  ];
-
-  const { getPosts, savePost, getPostById } = useContext(PostContext);
+  const { getPosts, savePost, getPostById, allPosts, myPosts } =
+    useContext(PostContext);
   const [switchPosts, setSwitchPosts] = useState('allPosts');
 
   useEffect(() => {
