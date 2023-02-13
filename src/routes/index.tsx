@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import AuthProvider from '../contexts/Auth/indext';
 import PostProvider from '../contexts/Post';
+import UserProvider from '../contexts/User';
 import Home from '../pages/Home';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
@@ -31,18 +32,20 @@ const RouteManager = () => {
     <Router>
       <AuthProvider>
         <PostProvider>
-          <Header />
-          <Routes>
-            <Route path="/" element={<ProtectedRoutes />}>
-              <Route path="/" element={<Home />} />
-            </Route>
+          <UserProvider>
+            <Header />
+            <Routes>
+              <Route path="/" element={<ProtectedRoutes />}>
+                <Route path="/" element={<Home />} />
+              </Route>
 
-            <Route path="/" element={<UnprotectedRoutes />}>
-              <Route path="/login" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
-            </Route>
-          </Routes>
-          <Footer />
+              <Route path="/" element={<UnprotectedRoutes />}>
+                <Route path="/login" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+              </Route>
+            </Routes>
+            <Footer />
+          </UserProvider>
         </PostProvider>
       </AuthProvider>
     </Router>
