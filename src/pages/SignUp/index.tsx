@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/Auth/indext';
+import { UserContext } from '../../contexts/User';
 import { Styled } from './styles';
 
 export type SignUpInputs = {
@@ -13,7 +13,7 @@ export type SignUpInputs = {
 };
 
 const SignUp = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

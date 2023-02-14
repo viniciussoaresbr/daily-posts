@@ -10,6 +10,7 @@ const SignUpContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #e6e6ea;
+  padding-bottom: 7rem;
 `;
 
 const SignUpForm = styled.form`

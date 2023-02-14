@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/Auth/indext';
+import { AuthContext } from '../../contexts/Auth';
 import { Styled } from './styles';
 
 export type SignInInputs = {

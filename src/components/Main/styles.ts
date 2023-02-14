@@ -123,7 +123,8 @@ const PostCard = styled.div`
   justify-content: space-around;
   flex-direction: column;
   width: 95%;
-  height: 65px;
+  min-height: 65px;
+  word-break: break-word;
   border-radius: 0.2rem;
   padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px,

@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import AuthProvider from '../contexts/Auth/indext';
+import AuthProvider from '../contexts/Auth';
 import PostProvider from '../contexts/Post';
 import UserProvider from '../contexts/User';
 import Home from '../pages/Home';

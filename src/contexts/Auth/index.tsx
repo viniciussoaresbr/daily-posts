@@ -8,18 +8,8 @@ import {
   UseFormReset,
   UseFormSetError,
 } from 'react-hook-form';
-import { SignUpInputs } from '../../pages/SignUp';
 import { SignInInputs } from '../../pages/SignIn';
-
-interface IUserLogin {
-  email: string;
-  password: string;
-}
-
-interface IUserRegister extends IUserLogin {
-  name: string;
-  lastname: string;
-}
+import { IUserLogin } from '../User';
 
 interface IAuthContext {
   handleLogin: (
@@ -30,12 +20,6 @@ interface IAuthContext {
   ) => void;
   handleLogout: () => void;
   authenticated: boolean;
-  registerUser: (
-    user: IUserRegister,
-    reset: UseFormReset<SignUpInputs>,
-    setError: UseFormSetError<SignUpInputs>,
-    clearErrors: UseFormClearErrors<SignUpInputs>,
-  ) => void;
 }
 
 export const AuthContext = createContext({} as IAuthContext);
@@ -84,32 +68,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     navigate('/login');
   };
 
-  const registerUser = async (
-    user: IUserRegister,
-    reset: UseFormReset<SignUpInputs>,
-    setError: UseFormSetError<SignUpInputs>,
-    clearErrors: UseFormClearErrors<SignUpInputs>,
-  ) => {
-    try {
-      const { data } = await api.post('/users', user);
-      toast.success(data.message);
-      reset();
-      clearErrors();
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        toast.error(error.response?.data.message);
-        setError('email', {
-          type: 'custom',
-          message: error.response?.data.message,
-        });
-      }
-    }
-  };
-
   return (
-    <AuthContext.Provider
-      value={{ handleLogin, handleLogout, authenticated, registerUser }}
-    >
+    <AuthContext.Provider value={{ handleLogin, handleLogout, authenticated }}>
       {children}
     </AuthContext.Provider>
   );

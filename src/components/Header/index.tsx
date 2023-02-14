@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/Auth/indext';
+import { AuthContext } from '../../contexts/Auth';
 import ProfileCard from '../ProfileCard';
 import { Styled } from './styles';
 

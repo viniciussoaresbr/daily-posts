@@ -26,6 +26,7 @@ const Main = () => {
           {...register('text', { required: true })}
           name="text"
           placeholder="O que você está pensando ?"
+          maxLength={400}
         />
         <Styled.PostButton type="submit">Postar</Styled.PostButton>
       </Styled.PostForm>
