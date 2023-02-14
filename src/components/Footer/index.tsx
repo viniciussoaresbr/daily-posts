@@ -3,9 +3,14 @@ import React from 'react';
 import { Styled } from './styles';
 
 const Footer = () => {
+  const githubUrl = 'https://github.com/viniciussoaresbr';
+
   return (
     <Styled.Footer>
-      <Styled.FooterTitle>Designed By Vinicius Soares</Styled.FooterTitle>
+      <Styled.GithubLink href={githubUrl} target="_blank">
+        <Styled.GithubIcon />
+        <Styled.GithubProfile>Vinicius Soares</Styled.GithubProfile>
+      </Styled.GithubLink>
     </Styled.Footer>
   );
 };
