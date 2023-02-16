@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as User } from '../../assets/user-icon.svg';
+import { ReactComponent as Trash } from '../../assets/trash-icon.svg';
 
 const MainContainer = styled.main`
   display: flex;
@@ -129,6 +130,7 @@ const PostCard = styled.div`
   padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px,
     rgba(0, 0, 0, 0.13) 0px 0px 1px 1px;
+  position: relative;
 `;
 
 const PostAuthorContainer = styled.section`
@@ -155,6 +157,15 @@ const UserProfilePic = styled(User)`
   fill: #25252c;
 `;
 
+const TrashIcon = styled(Trash)`
+  width: 25px;
+  fill: #25252c;
+  position: absolute;
+  right: 0;
+  margin-right: 2px;
+  cursor: pointer;
+`;
+
 export const Styled = {
   MainContainer,
   NavPostContainer,
@@ -170,4 +181,5 @@ export const Styled = {
   UserProfilePic,
   PostAuthorContainer,
   PostAreaContainer,
+  TrashIcon,
 };

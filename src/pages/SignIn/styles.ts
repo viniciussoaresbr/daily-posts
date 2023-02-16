@@ -24,6 +24,18 @@ const SignInForm = styled.form`
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-top: 2rem;
+
+  @media (max-width: 1024px) {
+    width: 65%;
+  }
+
+  @media (max-width: 768px) {
+    width: 75%;
+  }
+
+  @media (max-width: 425px) {
+    width: 95%;
+  }
 `;
 
 const SignInTitle = styled.h1`
