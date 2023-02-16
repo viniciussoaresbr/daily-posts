@@ -20,6 +20,7 @@ interface IPostContext {
   myPosts: IPostData[];
   savePost: (data: IPost, reset: UseFormReset<IPost>) => void;
   getPostById: () => void;
+  deletePost: (id: number) => void;
 }
 
 export const PostContext = createContext({} as IPostContext);
@@ -79,9 +80,27 @@ const PostProvider = ({ children }: { children: ReactNode }) => {
       }
     }
   };
+
+  const deletePost = async (id: number) => {
+    const authToken = localStorage.getItem('token');
+    try {
+      const { data } = await api.delete(`/posts/${id}`, {
+        headers: {
+          Authorization: 'Bearer ' + authToken,
+        },
+      });
+      toast.success(data.message);
+      getPosts();
+      getPostById();
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message);
+      }
+    }
+  };
   return (
     <PostContext.Provider
-      value={{ getPosts, allPosts, myPosts, savePost, getPostById }}
+      value={{ getPosts, allPosts, myPosts, savePost, getPostById, deletePost }}
     >
       {children}
     </PostContext.Provider>
