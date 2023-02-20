@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/User';
+import { ROUTES } from '../../routes/routes';
 import { Styled } from './styles';
 
 export type SignUpInputs = {
@@ -177,7 +178,7 @@ const SignUp = () => {
         <Styled.NavSignUpContainer>
           <Styled.SignUpAdvice>
             Já tem cadastro ?
-            <Styled.SignUpLink onClick={() => navigate('/login')}>
+            <Styled.SignUpLink onClick={() => navigate(ROUTES.LOGIN)}>
               Entrar
             </Styled.SignUpLink>
           </Styled.SignUpAdvice>

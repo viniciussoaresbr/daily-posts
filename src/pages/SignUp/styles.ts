@@ -5,12 +5,11 @@ import { ReactComponent as SlashedEye } from '../../assets/slashed-eye-icon.svg'
 
 const SignUpContainer = styled.div`
   width: 100%;
-  min-height: calc(100vh - 4rem);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e6e6ea;
-  padding-bottom: 7rem;
+  margin-bottom: 5rem;
 `;
 
 const SignUpForm = styled.form`

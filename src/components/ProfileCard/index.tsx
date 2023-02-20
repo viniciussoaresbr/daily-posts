@@ -17,7 +17,10 @@ const ProfileCard = () => {
         <Styled.UserProfile />
         <Styled.Username>{username}</Styled.Username>
       </Styled.ProfileCard>
-      <DropDownMenu showMenu={showMenu} />
+      <DropDownMenu
+        showMenu={showMenu}
+        onClickOutside={() => setShowMenu(false)}
+      />
     </React.Fragment>
   );
 };

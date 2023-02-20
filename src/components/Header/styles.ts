@@ -16,6 +16,7 @@ const HeaderTitle = styled.h1`
   font-weight: 300;
   color: #f4f4f8;
   margin-left: 0.3rem;
+  cursor: pointer;
 `;
 
 export const Styled = {

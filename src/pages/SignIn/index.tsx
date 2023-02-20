@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Auth';
+import { ROUTES } from '../../routes/routes';
 import { Styled } from './styles';
 
 export type SignInInputs = {
@@ -69,7 +70,7 @@ const SignIn = () => {
         <Styled.NavSignInContainer>
           <Styled.SignInAdvice>
             Não tem cadastro ?
-            <Styled.SignInLink onClick={() => navigate('/signup')}>
+            <Styled.SignInLink onClick={() => navigate(ROUTES.SIGNUP)}>
               Cadastre-se
             </Styled.SignInLink>
           </Styled.SignInAdvice>

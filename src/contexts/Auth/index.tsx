@@ -10,6 +10,7 @@ import {
 } from 'react-hook-form';
 import { SignInInputs } from '../../pages/SignIn';
 import { IUserLogin } from '../User';
+import { ROUTES } from '../../routes/routes';
 
 interface IAuthContext {
   handleLogin: (
@@ -65,7 +66,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     setAuthenticated(false);
-    navigate('/login');
+    navigate(ROUTES.LOGIN);
   };
 
   return (

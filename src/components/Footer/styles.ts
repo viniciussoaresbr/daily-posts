@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { ReactComponent as Github } from '../../assets/github-icon.svg';
 
 const Footer = styled.footer`
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 4rem;
   display: flex;

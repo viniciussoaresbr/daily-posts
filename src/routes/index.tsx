@@ -12,19 +12,21 @@ import AuthProvider from '../contexts/Auth';
 import PostProvider from '../contexts/Post';
 import UserProvider from '../contexts/User';
 import Home from '../pages/Home';
+import NotFound from '../pages/NotFound';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import { ROUTES } from './routes';
 
 const ProtectedRoutes = () => {
   const authToken = localStorage.getItem('token');
 
-  return authToken ? <Outlet /> : <Navigate to="/login" />;
+  return authToken ? <Outlet /> : <Navigate to={ROUTES.LOGIN} />;
 };
 
 const UnprotectedRoutes = () => {
   const authToken = localStorage.getItem('token');
 
-  return authToken ? <Navigate to="/" /> : <Outlet />;
+  return authToken ? <Navigate to={ROUTES.HOME} /> : <Outlet />;
 };
 
 const RouteManager = () => {
@@ -35,13 +37,14 @@ const RouteManager = () => {
           <UserProvider>
             <Header />
             <Routes>
-              <Route path="/" element={<ProtectedRoutes />}>
-                <Route path="/" element={<Home />} />
+              <Route path={ROUTES.NOTFOUND} element={<NotFound />} />
+              <Route path={ROUTES.HOME} element={<ProtectedRoutes />}>
+                <Route path={ROUTES.HOME} element={<Home />} />
               </Route>
 
-              <Route path="/" element={<UnprotectedRoutes />}>
-                <Route path="/login" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
+              <Route path={ROUTES.HOME} element={<UnprotectedRoutes />}>
+                <Route path={ROUTES.LOGIN} element={<SignIn />} />
+                <Route path={ROUTES.SIGNUP} element={<SignUp />} />
               </Route>
             </Routes>
             <Footer />
