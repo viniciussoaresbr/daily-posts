@@ -37,9 +37,9 @@ const ModalConfirm = ({
       <Styled.ModalContent ref={componentRef}>
         <Styled.ModalText>{message}</Styled.ModalText>
         <Styled.ButtonWrapper>
-          <Styled.ModalButton onClick={onConfirm}>Confirm</Styled.ModalButton>
+          <Styled.ModalButton onClick={onConfirm}>Sim</Styled.ModalButton>
           <Styled.ModalButton btnType="cancel" onClick={onCancel}>
-            Cancel
+            Não
           </Styled.ModalButton>
         </Styled.ButtonWrapper>
       </Styled.ModalContent>
