@@ -29,9 +29,13 @@ const DropDownMenu = ({ showMenu, onClickOutside }: IDropDownMenuProps) => {
 
   const { handleLogout } = useContext(AuthContext);
   return (
-    <Styled.DropDownContainer showMenu={showMenu} ref={componentRef}>
+    <Styled.DropDownContainer
+      showMenu={showMenu}
+      ref={componentRef}
+      onClick={handleLogout}
+    >
       <Styled.LogoutIcon />
-      <Styled.DropDownList onClick={handleLogout}>Sair</Styled.DropDownList>
+      <Styled.DropDownList>Sair</Styled.DropDownList>
     </Styled.DropDownContainer>
   );
 };
