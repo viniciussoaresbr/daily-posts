@@ -1,15 +1,23 @@
-import { FieldError } from 'react-hook-form';
+import { FieldError, FieldErrors } from 'react-hook-form';
 import styled from 'styled-components';
+import { SignUpInputs } from '.';
 import { ReactComponent as Eye } from '../../assets/eye-icon.svg';
 import { ReactComponent as SlashedEye } from '../../assets/slashed-eye-icon.svg';
 
-const SignUpContainer = styled.div`
+const SignUpContainer = styled.div<{ errors: FieldErrors<SignUpInputs> }>`
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: ${({ errors }) =>
+    errors.name ||
+    errors.lastname ||
+    errors.email ||
+    errors.password ||
+    errors.confirmPassword
+      ? '10rem'
+      : '6rem'};
 `;
 
 const SignUpForm = styled.form`

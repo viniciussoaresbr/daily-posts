@@ -68,7 +68,7 @@ const SignUp = () => {
   };
 
   return (
-    <Styled.SignUpContainer>
+    <Styled.SignUpContainer errors={errors}>
       <Styled.SignUpForm onSubmit={handleSubmit(onSubmit)}>
         <Styled.SignUpTitle>Criar Conta</Styled.SignUpTitle>
         <Styled.SignUpLabel>Nome:</Styled.SignUpLabel>
