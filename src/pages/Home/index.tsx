@@ -71,13 +71,13 @@ const Home = () => {
                       <Styled.PostAuthorContainer>
                         <Styled.UserProfilePic />
                         <Styled.AuthorTitle>{username}</Styled.AuthorTitle>
+                        {authorId === Number(userId) && (
+                          <Styled.TrashIcon
+                            onClick={() => handleDeletePost(id)}
+                          />
+                        )}
                       </Styled.PostAuthorContainer>
                       <Styled.PostText>{text}</Styled.PostText>
-                      {authorId === Number(userId) && (
-                        <Styled.TrashIcon
-                          onClick={() => handleDeletePost(id)}
-                        />
-                      )}
                     </Styled.PostCard>
                   );
                 })

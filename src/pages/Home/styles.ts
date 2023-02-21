@@ -5,13 +5,13 @@ import { ReactComponent as Trash } from '../../assets/trash-icon.svg';
 const HomeContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
   min-height: 100vh;
   padding: 4rem 0 4rem 0;
 `;
 
-const PostWrapper = styled.main`
+const PostWrapper = styled.section`
   display: flex;
   flex-direction: column;
   width: 30rem;
@@ -123,7 +123,7 @@ const PostAreaContainer = styled.section`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: calc(100% - 4rem);
+  height: 100%;
   gap: 10px;
   padding: 3px;
 `;
@@ -139,11 +139,11 @@ const PostCard = styled.div`
   padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px,
     rgba(0, 0, 0, 0.13) 0px 0px 1px 1px;
-  position: relative;
 `;
 
 const PostAuthorContainer = styled.section`
   display: flex;
+  position: relative;
   align-items: center;
   width: 100%;
   height: 1.5rem;
@@ -168,6 +168,7 @@ const UserProfilePic = styled(User)`
 
 const TrashIcon = styled(Trash)`
   width: 25px;
+  height: 25px;
   fill: #25252c;
   position: absolute;
   right: 0;
