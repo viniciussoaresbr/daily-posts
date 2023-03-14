@@ -18,6 +18,11 @@ const SignUpContainer = styled.div<{ errors: FieldErrors<SignUpInputs> }>`
     errors.confirmPassword
       ? '10rem'
       : '6rem'};
+
+  @media (min-width: 1440px) {
+    justify-content: center;
+    margin: 0;
+  }
 `;
 
 const SignUpForm = styled.form`
