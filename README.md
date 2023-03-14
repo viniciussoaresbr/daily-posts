@@ -7,7 +7,7 @@ react-hook-form e axios.
 ### Backend da aplicação - https://github.com/viniciussoaresbr/jwt-auth-api
 
 ![image](https://user-images.githubusercontent.com/85377319/220434035-4a0eb4bb-4430-45bb-ad17-6727b813ecc9.png)
-![image](https://user-images.githubusercontent.com/85377319/220435181-3ab097a5-c57f-4483-8fda-6ac07cc9ad96.png)
+![image](https://user-images.githubusercontent.com/85377319/220471620-01853d79-c8fa-439b-958e-ec1fa8589d1e.png)
 
 > **Acesse a Página do Projeto:** [Daily Posts](https://daily-posts.vercel.app/)
 
