@@ -1,0 +1,166 @@
+<div
+  class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+>
+  <div
+    class="max-w-md w-full space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500"
+  >
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Crie sua conta
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Já possui uma conta?
+        <a
+          routerLink="/login"
+          class="font-medium text-primary-600 hover:text-primary-500 underline decoration-2 underline-offset-4"
+        >
+          Faça login
+        </a>
+      </p>
+    </div>
+    <form
+      class="mt-8 space-y-4 bg-white p-8 rounded-2xl shadow-xl shadow-primary-100/50 border border-primary-50"
+      [formGroup]="signupForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label
+            for="name"
+            class="block text-sm font-semibold text-gray-700 mb-1"
+            >Nome</label
+          >
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            required
+            class="input"
+            placeholder="João"
+          />
+        </div>
+        <div>
+          <label
+            for="lastname"
+            class="block text-sm font-semibold text-gray-700 mb-1"
+            >Sobrenome</label
+          >
+          <input
+            id="lastname"
+            formControlName="lastname"
+            type="text"
+            required
+            class="input"
+            placeholder="Silva"
+          />
+        </div>
+      </div>
+      <div>
+        <label
+          for="email"
+          class="block text-sm font-semibold text-gray-700 mb-1"
+          >E-mail</label
+        >
+        <input
+          id="email"
+          formControlName="email"
+          type="email"
+          required
+          class="input"
+          placeholder="seu@email.com"
+        />
+        <p class="h-2 mt-1 text-xs text-red-500">
+          {{
+            signupForm.get('email')?.touched && signupForm.get('email')?.invalid
+              ? 'E-mail inválido'
+              : ''
+          }}
+        </p>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label
+          for="password"
+          class="block text-sm font-semibold text-gray-700 mb-1"
+          >Senha</label
+        >
+        <div class="relative">
+          <input
+            id="password"
+            formControlName="password"
+            [type]="showPassword ? 'text' : 'password'"
+            required
+            class="input pr-10"
+            placeholder="••••••••"
+          />
+          <button
+            type="button"
+            (click)="togglePasswordVisibility()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <app-icon
+              [name]="showPassword ? 'eye-off' : 'eye'"
+              class="h-5 w-5"
+            ></app-icon>
+          </button>
+        </div>
+        <p class="h-2 mt-1 text-xs text-red-500">
+          {{ passwordError }}
+        </p>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div>
+        <label
+          for="confirmPassword"
+          class="block text-sm font-semibold text-gray-700 mb-1"
+          >Confirmar Senha</label
+        >
+        <div class="relative">
+          <input
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            required
+            class="input pr-10"
+            placeholder="••••••••"
+          />
+          <button
+            type="button"
+            (click)="toggleConfirmPasswordVisibility()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <app-icon
+              [name]="showConfirmPassword ? 'eye-off' : 'eye'"
+              class="h-5 w-5"
+            ></app-icon>
+          </button>
+        </div>
+        <p class="h-2 mt-1 text-xs text-red-500">
+          {{
+            signupForm.get('confirmPassword')?.touched &&
+            signupForm.get('confirmPassword')?.hasError('passwordMismatch')
+              ? 'As senhas não coincidem'
+              : ''
+          }}
+        </p>
+      </div>
+
+      <div class="pt-2">
+        <button
+          type="submit"
+          [disabled]="signupForm.invalid || isLoading"
+          class="btn btn-primary w-full py-3 shadow-lg shadow-primary-200 flex justify-center items-center gap-2"
+        >
+          <app-icon
+            *ngIf="isLoading"
+            name="spinner"
+            class="h-5 w-5 text-white"
+          ></app-icon>
+          Cadastrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
