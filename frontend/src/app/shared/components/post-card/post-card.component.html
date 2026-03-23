@@ -1,0 +1,24 @@
+<div class="card mb-4 group hover:border-primary-200 transition-all">
+  <div class="flex justify-between items-start mb-4">
+    <div class="flex items-center gap-3">
+      <div
+        class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500"
+      >
+        <app-icon name="user" class="h-6 w-6"></app-icon>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-900">{{ post.username }}</h3>
+      </div>
+    </div>
+    <button
+      *ngIf="canDelete"
+      (click)="onDelete.emit(post.id)"
+      class="text-gray-400 hover:text-red-500 transition-all p-1"
+    >
+      <app-icon name="trash" class="h-5 w-5"></app-icon>
+    </button>
+  </div>
+  <p class="text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
+    {{ post.text }}
+  </p>
+</div>
