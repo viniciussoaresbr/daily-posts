@@ -21,4 +21,23 @@
   <p class="text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
     {{ post.text }}
   </p>
+  <div class="mt-4 pt-4 border-t border-gray-100">
+    <button
+      (click)="onLike.emit(post.id)"
+      [disabled]="isLiking"
+      class="inline-flex items-center gap-2 text-sm font-semibold transition-all"
+      [class.text-red-500]="post.likedByCurrentUser"
+      [class.text-gray-500]="!post.likedByCurrentUser"
+      [class.hover:text-red-500]="!post.likedByCurrentUser"
+      [class.cursor-not-allowed]="isLiking"
+    >
+      <app-icon
+        name="heart"
+        [class]="
+          'h-5 w-5 ' + (post.likedByCurrentUser ? 'fill-current' : 'fill-none')
+        "
+      ></app-icon>
+      <span>{{ post.likesCount }}</span>
+    </button>
+  </div>
 </div>

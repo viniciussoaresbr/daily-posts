@@ -17,7 +17,7 @@
             class="text-xs text-gray-400"
             [class.text-red-500]="postForm.get('text')?.value?.length >= 400"
           >
-            {{ postForm.get('text')?.value?.length || 0 }}/400
+            {{ postForm.get("text")?.value?.length || 0 }}/400
           </span>
           <button
             type="submit"
@@ -42,9 +42,9 @@
       Todos os Posts
     </button>
     <button
-      (click)="switchTab('my')"
-      [class.text-primary-600]="activeTab === 'my'"
-      [class.border-primary-600]="activeTab === 'my'"
+      (click)="switchTab('myPosts')"
+      [class.text-primary-600]="activeTab === 'myPosts'"
+      [class.border-primary-600]="activeTab === 'myPosts'"
       class="pb-4 px-2 font-bold transition-all border-b-2 border-transparent hover:text-primary-500"
     >
       Meus Posts
@@ -69,7 +69,9 @@
         *ngFor="let post of displayedPosts"
         [post]="post"
         [canDelete]="post.authorId === currentUserId"
+        [isLiking]="likingPostIds.has(post.id)"
         (onDelete)="confirmDelete($event)"
+        (onLike)="toggleLike($event)"
       ></app-post-card>
 
       <div

@@ -8,5 +8,7 @@ import { IPost } from '../../../core/models';
 export class PostCardComponent {
   @Input() post!: IPost;
   @Input() canDelete = false;
+  @Input() isLiking = false;
   @Output() onDelete = new EventEmitter<number>();
+  @Output() onLike = new EventEmitter<number>();
 }

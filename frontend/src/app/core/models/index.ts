@@ -10,6 +10,8 @@ export interface IPost {
   text: string;
   username: string;
   authorId: number;
+  likesCount: number;
+  likedByCurrentUser: boolean;
 }
 
 export interface IPostRequest {
@@ -23,4 +25,9 @@ export interface IUserRegister extends IUser {
 export interface IAuthResponse {
   accessToken: string;
   userId: number;
+}
+
+export interface ILikeResponse {
+  likesCount: number;
+  likedByCurrentUser: boolean;
 }
