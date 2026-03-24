@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { IAuthResponse } from '../models';
+import { environment } from '../../../environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:3001';
+  private readonly API_URL = environment.apiUrl;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(
     this.hasToken(),
   );
