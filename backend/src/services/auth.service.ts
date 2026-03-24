@@ -1,8 +1,8 @@
-import { prisma } from '../database/prisma';
-import { IAuthService, IUserLogin } from '../interfaces';
-import createError from 'http-errors';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { prisma } from "../database/prisma";
+import { IAuthService, IUserLogin } from "../interfaces";
+import createError from "http-errors";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 class AuthService implements IAuthService {
   async auth(
@@ -17,11 +17,11 @@ class AuthService implements IAuthService {
     });
 
     if (!user) {
-      throw new createError.NotFound('Usuário não cadastrado');
+      throw new createError.NotFound("Usuário não cadastrado");
     }
 
     const checkPassword = bcrypt.compareSync(password, user.password);
-    if (!checkPassword) throw new createError.Unauthorized('Senha inválida');
+    if (!checkPassword) throw new createError.Unauthorized("Senha inválida");
 
     const accessToken = jwt.sign(
       { userId: user.id, username: user.name },
