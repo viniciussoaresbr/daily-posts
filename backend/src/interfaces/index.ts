@@ -7,6 +7,7 @@ export interface IUser {
   email: string;
   password?: string;
   posts?: IPost[];
+  likes?: ILike[];
 }
 
 export interface IPost {
@@ -15,6 +16,17 @@ export interface IPost {
   text: string;
   authorId: number;
   author?: IUser;
+  likesCount?: number;
+  likedByCurrentUser?: boolean;
+  likes?: ILike[];
+}
+
+export interface ILike {
+  id?: number;
+  userId: number;
+  postId: number;
+  user?: IUser;
+  post?: IPost;
 }
 
 export interface IUserLogin {
@@ -33,20 +45,30 @@ export interface IRequest extends Request {
 
 export interface IPostService {
   save(postBody: Partial<IPost>, user: IUserRequest): Promise<IPost>;
-  findAll(): Promise<IPost[]>;
-  findByUserId(id: number): Promise<IPost[]>;
+  findAll(user: IUserRequest): Promise<IPost[]>;
+  findByUserId(id: number, user: IUserRequest): Promise<IPost[]>;
   deletePostById(id: number, user: IUserRequest): Promise<IPost>;
+  likePost(
+    postId: number,
+    user: IUserRequest,
+  ): Promise<{ likesCount: number; likedByCurrentUser: boolean }>;
+  unlikePost(
+    postId: number,
+    user: IUserRequest,
+  ): Promise<{ likesCount: number; likedByCurrentUser: boolean }>;
 }
 
 export interface IPostController {
   save(req: IRequest, res: Response, next: NextFunction): Promise<void>;
-  findAll(req: Request, res: Response, next: NextFunction): Promise<void>;
-  findByUserId(req: Request, res: Response, next: NextFunction): Promise<void>;
+  findAll(req: IRequest, res: Response, next: NextFunction): Promise<void>;
+  findByUserId(req: IRequest, res: Response, next: NextFunction): Promise<void>;
   deletePostById(
     req: IRequest,
     res: Response,
     next: NextFunction,
   ): Promise<void>;
+  likePost(req: IRequest, res: Response, next: NextFunction): Promise<void>;
+  unlikePost(req: IRequest, res: Response, next: NextFunction): Promise<void>;
 }
 
 export interface IUserService {

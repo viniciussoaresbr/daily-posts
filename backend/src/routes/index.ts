@@ -15,6 +15,8 @@ router.get('/users/:userId', authToken, userController.findUserById);
 router.post('/auth', authController.auth);
 router.post('/posts', authToken, postController.save);
 router.get('/posts', authToken, postController.findAll);
+router.post('/posts/:id/like', authToken, postController.likePost);
+router.delete('/posts/:id/like', authToken, postController.unlikePost);
 router.delete('/posts/:id', authToken, postController.deletePostById);
 router.get('/posts/users/:userId', authToken, postController.findByUserId);
 
