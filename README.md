@@ -1,6 +1,17 @@
-# Daily Posts 
+# Daily Posts
 
 O projeto é uma rede social simples de compartilhamento de mensagens diárias, desenvolvida com **Angular** no frontend, utilizando **Tailwind CSS** para uma estilização moderna e responsiva. A aplicação conta com um sistema de autenticação seguro, gerenciamento de posts. No backend, a API foi construída com **Node.js (TypeScript)** e **Express**, utilizando **Prisma** como ORM para comunicação com o banco de dados **PostgreSQL**. A segurança é garantida através de autenticação via **JWT**.
+
+---
+
+## ✨ Funcionalidades
+
+- Cadastro e login de usuários com autenticação JWT.
+- Criação, listagem e exclusão de posts.
+- Sistema de likes com toggle no frontend:
+  - Curtir: `POST /posts/:id/like`
+  - Descurtir: `DELETE /posts/:id/like`
+- Em **Todos os Posts**, ordenação por quantidade de likes (do maior para o menor).
 
 ---
 
@@ -76,6 +87,15 @@ Em um novo terminal, entre na pasta do frontend e instale as dependências:
 ```bash
 cd frontend
 npm install
+```
+
+Crie o arquivo `frontend/src/environments/environment.dev.ts` com:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: "http://localhost:3001",
+};
 ```
 
 ---
