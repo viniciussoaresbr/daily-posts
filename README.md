@@ -8,10 +8,8 @@ O projeto é uma rede social simples de compartilhamento de mensagens diárias, 
 
 - Cadastro e login de usuários com autenticação JWT.
 - Criação, listagem e exclusão de posts.
-- Sistema de likes com toggle no frontend:
-  - Curtir: `POST /posts/:id/like`
-  - Descurtir: `DELETE /posts/:id/like`
-- Em **Todos os Posts**, ordenação por quantidade de likes (do maior para o menor).
+- Sistema de likes com toggle no frontend
+- Em **Todos os Posts**, ordenação por quantidade de likes.
 
 ---
 
@@ -89,7 +87,7 @@ cd frontend
 npm install
 ```
 
-Crie o arquivo `frontend/src/environments/environment.dev.ts` com:
+Verifique o arquivo `frontend/src/environments/environment.dev.ts`:
 
 ```ts
 export const environment = {
