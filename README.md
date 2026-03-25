@@ -4,17 +4,18 @@ O projeto é uma rede social simples de compartilhamento de mensagens diárias, 
 
 ---
 
-### Login
+### Home 
 
-![Tela de Login](frontend/src/app/shared/assets/screenshots/login.png)
+<p align="center">
+   <img src="./frontend/src/app/shared/assets/screenshots/home.png" width="99%" />
+</p>
 
-### Cadastro
+### Login e Cadastro 
 
-![Tela de Cadastro](frontend/src/app/shared/assets/screenshots/signup.png)
-
-### Home
-
-![Tela Home](frontend/src/app/shared/assets/screenshots/home.png)
+<p align="center">
+  <img src="./frontend/src/app/shared/assets/screenshots/login.png" width="49%" />
+  <img src="./frontend/src/app/shared/assets/screenshots/signup.png" width="49%" />
+</p>
 
 ## ✨ Funcionalidades
 
