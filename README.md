@@ -21,7 +21,7 @@ O projeto é uma rede social simples de compartilhamento de mensagens diárias, 
 
 - Cadastro e login de usuários com autenticação JWT.
 - Criação, listagem e exclusão de posts.
-- Sistema de likes com toggle no frontend
+- Sistema de likes 
 - Em **Todos os Posts**, ordenação por quantidade de likes.
 
 ---
