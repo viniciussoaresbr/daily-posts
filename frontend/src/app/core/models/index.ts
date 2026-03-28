@@ -12,6 +12,15 @@ export interface IPost {
   authorId: number;
   likesCount: number;
   likedByCurrentUser: boolean;
+  commentsCount: number;
+}
+
+export interface IComment {
+  id: number;
+  text: string;
+  userId: number;
+  postId: number;
+  username: string;
 }
 
 export interface IPostRequest {
