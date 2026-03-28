@@ -25,6 +25,7 @@ class PostService implements IPostService {
         _count: {
           select: {
             likes: true,
+            comments: true,
           },
         },
         likes: {
@@ -44,6 +45,7 @@ class PostService implements IPostService {
       text: post.text,
       authorId: post.authorId,
       likesCount: post._count.likes,
+      commentsCount: post._count.comments,
       likedByCurrentUser: post.likes.length > 0,
     })) as IPost[];
   }
@@ -57,6 +59,7 @@ class PostService implements IPostService {
         _count: {
           select: {
             likes: true,
+            comments: true,
           },
         },
         likes: {
@@ -76,6 +79,7 @@ class PostService implements IPostService {
       text: post.text,
       authorId: post.authorId,
       likesCount: post._count.likes,
+      commentsCount: post._count.comments,
       likedByCurrentUser: post.likes.length > 0,
     })) as IPost[];
   }

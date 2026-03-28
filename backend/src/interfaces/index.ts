@@ -19,6 +19,7 @@ export interface IPost {
   likesCount?: number;
   likedByCurrentUser?: boolean;
   likes?: ILike[];
+  commentsCount?: number;
 }
 
 export interface ILike {
@@ -27,6 +28,14 @@ export interface ILike {
   postId: number;
   user?: IUser;
   post?: IPost;
+}
+
+export interface IComment {
+  id?: number;
+  text: string;
+  userId: number;
+  postId: number;
+  username: string;
 }
 
 export interface IUserLogin {
@@ -87,4 +96,24 @@ export interface IAuthService {
 
 export interface IAuthController {
   auth(req: Request, res: Response, next: NextFunction): Promise<void>;
+}
+
+export interface ICommentService {
+  createComment(
+    postId: number,
+    text: string,
+    user: IUserRequest,
+  ): Promise<IComment>;
+  getCommentsByPost(postId: number): Promise<IComment[]>;
+  deleteComment(commentId: number, user: IUserRequest): Promise<IComment>;
+}
+
+export interface ICommentController {
+  createComment(req: IRequest, res: Response, next: NextFunction): Promise<void>;
+  getCommentsByPost(
+    req: IRequest,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void>;
+  deleteComment(req: IRequest, res: Response, next: NextFunction): Promise<void>;
 }
