@@ -21,7 +21,7 @@
   <p class="text-gray-700 leading-relaxed whitespace-pre-wrap break-words">
     {{ post.text }}
   </p>
-  <div class="mt-4 pt-4 border-t border-gray-100">
+  <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-6">
     <button
       (click)="onLike.emit(post.id)"
       [disabled]="isLiking"
@@ -39,5 +39,48 @@
       ></app-icon>
       <span>{{ post.likesCount }}</span>
     </button>
+
+    <div class="inline-flex items-center gap-2 text-sm font-semibold text-gray-500">
+      <app-icon name="message-circle" class="h-5 w-5"></app-icon>
+      <span>Comentários ({{ post.commentsCount }})</span>
+    </div>
+  </div>
+
+  <div class="mt-6 space-y-4">
+    <div class="flex gap-3">
+      <div class="flex-1">
+        <textarea
+          [(ngModel)]="newCommentText"
+          placeholder="Escreva um comentário..."
+          class="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+          rows="1"
+        ></textarea>
+      </div>
+      <button
+        (click)="addComment()"
+        [disabled]="!newCommentText.trim() || isAddingComment"
+        class="px-4 py-2 bg-primary-500 text-white text-sm font-semibold rounded-lg hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+      >
+        Enviar
+      </button>
+    </div>
+
+    <div class="space-y-3">
+      <div *ngFor="let comment of comments" class="bg-gray-50 p-3 rounded-lg group/comment">
+        <div class="flex justify-between items-start">
+          <div class="flex-1">
+            <span class="font-bold text-xs text-gray-900 mr-2">{{ comment.username }}</span>
+            <p class="text-sm text-gray-700 mt-1">{{ comment.text }}</p>
+          </div>
+          <button
+            *ngIf="canDeleteComment(comment)"
+            (click)="deleteComment(comment.id)"
+            class="text-gray-400 hover:text-red-500 transition-all opacity-0 group-hover/comment:opacity-100 p-1"
+          >
+            <app-icon name="trash" class="h-4 w-4"></app-icon>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
