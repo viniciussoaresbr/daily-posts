@@ -1,16 +1,16 @@
 # Daily Posts
 
-O projeto é uma rede social simples de compartilhamento de mensagens diárias, desenvolvida com **Angular** no frontend, utilizando **Tailwind CSS** para uma estilização moderna e responsiva. A aplicação conta com um sistema de autenticação seguro, gerenciamento de posts e interação através de curtidas e comentários. No backend, a API foi construída com **Node.js (TypeScript)** e **Express**, utilizando **Prisma** como ORM para comunicação com o banco de dados **PostgreSQL**. A segurança é garantida através de autenticação via **JWT**.
+O projeto é uma rede social simples de compartilhamento de mensagens diárias, desenvolvida com **Angular** no frontend, utilizando **Tailwind CSS** para uma estilização moderna e responsiva. A aplicação conta com um sistema de autenticação, gerenciamento de posts e interação através de curtidas e comentários. No backend, a API foi construída com **Node.js (TypeScript)** e **Express**, utilizando **Prisma** como ORM para comunicação com o banco de dados **PostgreSQL**, com aplicação do padrão de projeto de software **Factory**. A segurança é garantida através de autenticação via **JWT**.
 
 ---
 
-### Home 
+### Home
 
 <p align="center">
    <img src="./frontend/src/app/shared/assets/screenshots/home.png" width="99%" />
 </p>
 
-### Login e Cadastro 
+### Login e Cadastro
 
 <p align="center">
   <img src="./frontend/src/app/shared/assets/screenshots/login.png" width="49%" />
