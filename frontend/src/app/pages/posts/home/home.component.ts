@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { forkJoin, interval, of, startWith, Subscription } from "rxjs";
 import { PostService } from "../../../core/services/post.service";
 import { AuthService } from "../../../core/services/auth.service";
 import { IPost } from "../../../core/models";
@@ -8,7 +9,10 @@ import { IPost } from "../../../core/models";
   selector: "app-home",
   templateUrl: "./home.component.html",
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  private readonly POSTS_REFRESH_INTERVAL = 300000; //5 min
+  private postsRefreshSubscription?: Subscription;
+
   postForm: FormGroup;
   isLoading = false;
   isLoadingList = false;
@@ -33,24 +37,35 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPosts();
+    this.startPostsRefresh();
   }
 
-  loadPosts(): void {
-    this.isLoadingList = true;
-    this.postService.getAllPosts().subscribe({
-      next: posts => {
-        this.allPosts = posts;
+  ngOnDestroy(): void {
+    this.postsRefreshSubscription?.unsubscribe();
+  }
+
+  loadPosts(showLoader = true): void {
+    if (showLoader) {
+      this.isLoadingList = true;
+    }
+
+    const myPosts$ = this.currentUserId
+      ? this.postService.getMyPosts(this.currentUserId)
+      : of<IPost[]>([]);
+
+    forkJoin({
+      allPosts: this.postService.getAllPosts(),
+      myPosts: myPosts$,
+    }).subscribe({
+      next: ({ allPosts, myPosts }) => {
+        this.allPosts = allPosts;
+        this.myPosts = myPosts;
         this.isLoadingList = false;
       },
-      error: () => (this.isLoadingList = false),
+      error: () => {
+        this.isLoadingList = false;
+      },
     });
-
-    if (this.currentUserId) {
-      this.postService.getMyPosts(this.currentUserId).subscribe({
-        next: posts => (this.myPosts = posts),
-      });
-    }
   }
 
   get displayedPosts(): IPost[] {
@@ -139,5 +154,13 @@ export class HomeComponent implements OnInit {
     this.myPosts = this.myPosts.map(post =>
       post.id === postId ? { ...post, ...changes } : post,
     );
+  }
+
+  private startPostsRefresh(): void {
+    this.postsRefreshSubscription = interval(this.POSTS_REFRESH_INTERVAL)
+      .pipe(startWith(0))
+      .subscribe(cycle => {
+        this.loadPosts(cycle === 0);
+      });
   }
 }

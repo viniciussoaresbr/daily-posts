@@ -24,6 +24,7 @@ O projeto é uma rede social simples de compartilhamento de mensagens diárias, 
 - Sistema de likes e comentários em posts.
 - Contador dinâmico de interações.
 - Em **Todos os Posts**, ordenação por quantidade de likes.
+- Atualização automática da listagem de posts na Home a cada 5 minutos.
 
 ---
 
